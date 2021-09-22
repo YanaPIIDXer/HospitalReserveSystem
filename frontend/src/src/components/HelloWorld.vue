@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{ msg }}</h1>
-    <button v-on:click="onClickButton();">通信</button>
+    <button v-on:click="onClickButton();" class="btn btn-primary">通信</button>
   </div>
 </template>
 
