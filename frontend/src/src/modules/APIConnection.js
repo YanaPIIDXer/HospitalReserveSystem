@@ -7,3 +7,8 @@ export function get(api) {
     const url = ENDPOINT + api;
     return conn.get(url);
 }
+
+export function post(api, params) {
+    const url = ENDPOINT + api;
+    return conn.post(url, params);
+}
