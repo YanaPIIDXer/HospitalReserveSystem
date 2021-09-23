@@ -2,9 +2,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <p class="navbar-brand">診療予約システム</p>
         <div class="navbar-nav">
-            <nav-bar-item text="患者一覧" />
-            <nav-bar-item text="患者追加" />
-            <nav-bar-item text="予約一覧" />
+            <nav-bar-item text="患者一覧" index=0 />
+            <nav-bar-item text="患者追加" index=1 />
+            <nav-bar-item text="予約一覧" index=2 />
         </div>
     </nav>
 </template>
