@@ -1,12 +1,16 @@
 <template>
   <div id="app">
+    <top />
   </div>
 </template>
 
 <script>
+import Top from './components/Top';
+
 export default {
   name: 'App',
   components: {
+    Top
   }
 }
 </script>
