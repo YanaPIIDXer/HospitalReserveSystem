@@ -10,24 +10,54 @@
             return $conn;
         }
 
-        // クエリ実行
-        public function query($query) {
-            $stmt = $pdo->query($query);
-            return $stmt;
+        // クエリ実行準備
+        public function prepare($query) {
+            $stmt = $this->pdo->prepare($query);
+            return new SQLStatement($stmt);
         }
 
         // 直接実行
         public function execute($query) {
-            return $pdo->execute($query);
+            return $this->pdo->execute($query);
         }
 
         // PDOオブジェクト生成
         private function create_pdo() {
             try {
-                $pdo = new PDO("mysql:dbname=hospital_reserve;host=db", "develop", "develop");
+                $this->pdo = new PDO("mysql:dbname=hospital_reserve;host=db", "develop", "develop");
             }
             catch (PDOException $e) { return false; }
             return true;
+        }
+    }
+
+    // SQLステートメント
+    class SQLStatement {
+        private $stmt;
+
+        // コンストラクタ
+        public function __construct($stmt) {
+            $this->stmt = $stmt;
+        }
+
+        // 整数値のバインド
+        public function bind_int($param, $value) {
+            $this->stmt->bindValue($param, $value, PDO::PARAM_INT);
+        }
+
+        // 文字列のバインド
+        public function bind_string($param, $value) {
+            $this->stmt->bindValue($param, $value, PDO::PARAM_STR);
+        }
+
+        // 実行
+        public function execute() {
+            $this->stmt->execute();
+        }
+
+        // 全部フェッチ
+        public function fetch_all() {
+            return $this->stmt->fetchAll();
         }
     }
 ?>
