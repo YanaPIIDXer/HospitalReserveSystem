@@ -29,7 +29,7 @@ export default {
         this.reserves = json.reserve;
     },
     methods: {
-        onReserve: function() {
+        onReserve: async function() {
             if (!this.date) {
                 alert("日付が入力されていません");
                 return;
@@ -40,7 +40,12 @@ export default {
             }
             if (!confirm("予約しますか？")) { return; }
             var datetime = this.date + " " + this.time;
-            alert(datetime);
+            
+            let params = new URLSearchParams();
+            params.append("id", this.id);
+            params.append("datetime", datetime);
+            const result = await post("reserve/reserve.php", params);
+            console.log(result);
         }
     }
 }
