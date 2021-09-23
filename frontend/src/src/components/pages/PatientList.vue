@@ -11,6 +11,9 @@
                 <td>{{item.name}}</td>
                 <td>{{item.address}}</td>
                 <td>{{item.tel}}</td>
+                <td>
+                    <router-link :to="{ name: 'RegisterReserve', params: { id: item.id } }">予約</router-link>
+                </td>
             </tr>
         </tbody>
     </table>
