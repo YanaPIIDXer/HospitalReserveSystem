@@ -5,6 +5,19 @@
         <input type="date" v-model="date" />
         <input type="time" v-model="time" /><br />
         <button class="btn btn-primary" @click="onReserve">予約する</button>
+        <hr />
+        <table class="table table-stripe">
+            <thead>
+                <tr>
+                    <td>予約履歴</td>
+                </tr>
+            </thead>
+            <tbody v-for="item in reserves" v-bind:key="item.id">
+                <tr>
+                    <td>{{item.date_and_time}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
