@@ -26,7 +26,7 @@ export default {
         const result = await get("reserve/patient_reserve.php?id=" + this.id);
         const json = JSON.parse(JSON.stringify(result.data));
         this.name = json.name;
-        this.reserves = json.reserve;
+        this.reserves = json.reserves;
     },
     methods: {
         onReserve: async function() {
@@ -45,7 +45,14 @@ export default {
             params.append("id", this.id);
             params.append("datetime", datetime);
             const result = await post("reserve/reserve.php", params);
-            console.log(result);
+            const json = JSON.parse(JSON.stringify(result.data));
+            if (!json.result) {
+                alert("予約に失敗しました");
+                return;
+            }
+            alert("予約しました");
+            this.date = null;
+            this.time = null;
         }
     }
 }
