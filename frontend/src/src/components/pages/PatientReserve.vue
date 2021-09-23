@@ -1,12 +1,12 @@
 <template>
     <div>
-        <h1>予約登録</h1>
+        <h1>患者の予約情報</h1>
     </div>
 </template>
 
 <script>
 export default {
-    name: "RegisterReserve",
+    name: "PatientReserve",
     data: function() {
         return {
             id: this.$route.params.id
