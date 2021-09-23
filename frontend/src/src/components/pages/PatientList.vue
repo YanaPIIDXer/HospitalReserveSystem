@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import conn from "../../modules/BasicConnection";
+import { get } from "../../modules/APIConnection";
 
 export default {
     name: "PatientList",
@@ -27,7 +27,7 @@ export default {
         };
     },
     mounted: async function() {
-        var result = await conn.get("http://localhost:3000/api/patient/list.php");
+        var result = await get("patient/list.php");
         var json = JSON.parse(JSON.stringify(result.data));
         this.list = json;
     }
