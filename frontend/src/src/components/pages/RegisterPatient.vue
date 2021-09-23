@@ -2,17 +2,16 @@
     <div>
         <h1>患者登録</h1>
         <hr />
-        <form id="register_form">
-            <label>姓：</label><input type="text" name="last_name" v-model="last_name" /><br />
-            <label>名：</label><input type="text" name="first_name" v-model="first_name" /><br />
-            <label>住所：</label><input type="text" name="address" v-model="address" /><br />
-            <label>電話番号</label><input type="text" name="tel" v-model="tel" /><br />
-            <button class="btn btn-primary" @click="onRegister">登録</button>
-        </form>
+        <label>姓：</label><input type="text" name="last_name" v-model="last_name" /><br />
+        <label>名：</label><input type="text" name="first_name" v-model="first_name" /><br />
+        <label>住所：</label><input type="text" name="address" v-model="address" /><br />
+        <label>電話番号</label><input type="text" name="tel" v-model="tel" /><br />
+        <button class="btn btn-primary" @click="onRegister">登録</button>
     </div>
 </template>
 
 <script>
+import { post } from '../../modules/APIConnection';
 export default {
     name: "RegisterPatient",
     data: function() {
@@ -24,7 +23,7 @@ export default {
         };
     },
     methods: {
-        onRegister: function() {
+        onRegister: async function() {
             if (this.last_name === "") {
                 alert("姓が入力されていません");
                 return;
@@ -43,6 +42,13 @@ export default {
             }
             
             if (!confirm("登録しますか？")) { return; }
+            const name = this.last_name + " " + this.first_name;
+            let params = new URLSearchParams();
+            params.append("name", name);
+            params.append("address", this.address);
+            params.append("tel", this.tel);
+            const result = await post("patient/register.php", params);
+            console.log(result);
             alert("登録しました");
         }
     }
