@@ -7,6 +7,11 @@
 <script>
 export default {
     name: "RegisterReserve",
+    data: function() {
+        return {
+            id: this.$route.params.id
+        };
+    }
 }
 </script>
 
