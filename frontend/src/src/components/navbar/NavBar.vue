@@ -2,16 +2,21 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <p class="navbar-brand">診療予約システム</p>
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="#">患者一覧</a>
-            <a class="nav-item nav-link" href="#">患者追加</a>
-            <a class="nav-item nav-link" href="#">予約情報</a>
+            <nav-bar-item text="患者一覧" />
+            <nav-bar-item text="患者追加" />
+            <nav-bar-item text="予約一覧" />
         </div>
     </nav>
 </template>
 
 <script>
+import NavBarItem from './NavBarItem';
+
 export default {
-    name: "NavBar"
+    name: "NavBar",
+    components: {
+        NavBarItem
+    }
 }
 </script>
 
