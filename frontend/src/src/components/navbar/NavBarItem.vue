@@ -1,5 +1,7 @@
 <template>
-    <p class="nav-item nav-link" v-on:click="onClick()" v-bind:class="{active:(selectedIndex == index)}">{{ text }}</p>
+    <router-link v-bind:to="path">
+        <p class="nav-item nav-link" v-on:click="onClick()" v-bind:class="{active:(selectedIndex == index)}">{{ text }}</p>
+    </router-link>
 </template>
 
 <script>
@@ -7,6 +9,7 @@ export default {
     name: "NavBarItem",
     props: {
         text: String,
+        path: String,
         index: Number,
         selectedIndex: Number
     },
