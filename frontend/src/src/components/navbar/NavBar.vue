@@ -2,7 +2,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <p class="navbar-brand">診療予約システム</p>
         <div class="navbar-nav">
-            <nav-bar-item text="患者一覧" path="/" index=0 :selectedIndex="selectedIndex" @on-click="onClickItem" />
+            <nav-bar-item text="トップ" path="/" index=0 :selectedIndex="selectedIndex" @on-click="onClickItem" />
+            <nav-bar-item text="患者一覧" path="/patient_list" index=0 :selectedIndex="selectedIndex" @on-click="onClickItem" />
             <nav-bar-item text="患者追加" path="/register_patient" index=1 :selectedIndex="selectedIndex" @on-click="onClickItem" />
             <nav-bar-item text="予約一覧" path="reserve_list" index=2 :selectedIndex="selectedIndex" @on-click="onClickItem" />
         </div>

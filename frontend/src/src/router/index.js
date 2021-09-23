@@ -1,3 +1,4 @@
+import Top from '../components/pages/Top';
 import PatientList from '../components/pages/PatientList';
 import RegisterPatient from '../components/pages/RegisterPatient';
 import ReserveList from '../components/pages/ReserveList';
@@ -9,6 +10,11 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: "/",
+        name: "Top",
+        component: Top
+    },
+    {
+        path: "/patient_list",
         name: "PatinetList",
         component: PatientList
     },
