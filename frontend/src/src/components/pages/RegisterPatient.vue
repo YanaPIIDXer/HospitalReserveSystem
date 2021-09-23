@@ -48,8 +48,13 @@ export default {
             params.append("address", this.address);
             params.append("tel", this.tel);
             const result = await post("patient/register.php", params);
-            console.log(result);
+            const json = JSON.parse(JSON.stringify(result.data));
+            if (!json.result) {
+                alert("登録に失敗しました。");
+                return;
+            }
             alert("登録しました");
+            window.location = "/patient_list";
         }
     }
 }
