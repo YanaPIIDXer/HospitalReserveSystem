@@ -1,11 +1,15 @@
 <template>
     <div>
         <h1>{{this.name}} 様</h1>
+        <hr />
+        <input type="date" v-model="date" />
+        <input type="time" v-model="time" /><br />
+        <button class="btn btn-primary" @click="onReserve">予約する</button>
     </div>
 </template>
 
 <script>
-import { get } from '../../modules/APIConnection';
+import { get, post } from '../../modules/APIConnection';
 
 export default {
     name: "PatientReserve",
@@ -13,6 +17,8 @@ export default {
         return {
             id: this.$route.params.id,
             name: "",
+            date: null,
+            time: null,
             reserves: []
         };
     },
@@ -21,6 +27,21 @@ export default {
         const json = JSON.parse(JSON.stringify(result.data));
         this.name = json.name;
         this.reserves = json.reserve;
+    },
+    methods: {
+        onReserve: function() {
+            if (!this.date) {
+                alert("日付が入力されていません");
+                return;
+            }
+            if (!this.time) {
+                alert("時間が入力されていません");
+                return;
+            }
+            if (!confirm("予約しますか？")) { return; }
+            var datetime = this.date + " " + this.time;
+            alert(datetime);
+        }
     }
 }
 </script>
