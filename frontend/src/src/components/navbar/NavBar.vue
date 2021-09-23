@@ -25,6 +25,7 @@ export default {
     methods: {
         onClickItem: function(index) {
             this.selectedIndex = index;
+            this.$emit("on-select", this.selectedIndex);
         }
     }
 }

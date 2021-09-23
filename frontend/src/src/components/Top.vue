@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav-bar />
+        <nav-bar @on-select="onSelectedNavBarItem" />
     </div>
 </template>
 
@@ -11,6 +11,11 @@ export default {
     name: "Top",
     components: {
         NavBar
+    },
+    methods: {
+        onSelectedNavBarItem: function (index) {
+            alert(index);
+        }
     }
 }
 </script>
