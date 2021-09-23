@@ -55,9 +55,9 @@
             $this->stmt->execute();
         }
 
-        // 全部フェッチ
-        public function fetch_all() {
-            return $this->stmt->fetchAll();
+        // フェッチ
+        public function fetch() {
+            return $this->stmt->fetch();
         }
     }
 ?>

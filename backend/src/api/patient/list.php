@@ -1,13 +1,20 @@
 <?php
     require_once "../../config/allow_cors.php";
+    require_once "../../classes/SQLConnection.php";
 
-    // ※モック
-    $response = [
-        ["id" => 1, "name" => "aaa", "address" => "xxx", "tel" => "0000000000"],
-        ["id" => 2, "name" => "bbb", "address" => "yyy", "tel" => "0000111000"],
-        ["id" => 3, "name" => "ccc", "address" => "zzz", "tel" => "0000000111"],
-        ["id" => 4, "name" => "ddd", "address" => "xyz", "tel" => "0222000000"],
-        ["id" => 5, "name" => "eee", "address" => "zyx", "tel" => "0000546000"]
-    ];
+    $conn = SQLCOnnection::create();
+    $stmt = $conn->prepare("SELECT id, name, address, tel FROM patients;");     // TODO:後でページネーションを考慮
+    $stmt->execute();
+
+    $response = [];
+    while ($row = $stmt->fetch()) {
+        array_push($response, [
+            "id" => $row["id"],
+            "name" => $row["name"],
+            "address" => $row["address"],
+            "tel" => $row["tel"],
+        ]);
+    }
+
     echo json_encode($response);
 ?>
