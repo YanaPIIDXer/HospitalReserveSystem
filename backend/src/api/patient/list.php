@@ -1,4 +1,6 @@
 <?php
+    require_once "../../config/allow_cors.php";
+
     // ※モック
     $response = [
         ["name" => "aaa", "address" => "xxx", "tel" => "0000000000"],
