@@ -1,4 +1,6 @@
 <?php
+    require_once "../../config/allow_cors.php";
+
     $result = ["result" => true];
 
     $name = $_POST["name"];
