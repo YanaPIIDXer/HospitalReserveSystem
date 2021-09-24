@@ -24,7 +24,8 @@
         // PDOオブジェクト生成
         private function create_pdo() {
             try {
-                $this->pdo = new PDO("mysql:dbname=hospital_reserve;host=db", "develop", "develop");
+                $host = "db";
+                $this->pdo = new PDO("mysql:dbname=hospital_reserve;host=". $host, "develop", "develop");
             }
             catch (PDOException $e) { return false; }
             return true;
