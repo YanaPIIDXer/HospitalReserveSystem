@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { get } from '../../modules/APIConnection';
+import { get, post } from '../../modules/APIConnection';
 
 export default {
     name: "ReserveEdit",
@@ -34,7 +34,20 @@ export default {
     },
     methods: {
         onUpdate: async function () {
-            if (!confirm("更新しますか？")) { return; }
+            if (!confirm("変更しますか？")) { return; }
+            var datetime = this.date + " " + this.time;
+            
+            let params = new URLSearchParams();
+            params.append("id", this.id);
+            params.append("datetime", datetime);
+            const result = await post("reserve/update.php", params);
+            const json = JSON.parse(JSON.stringify(result.data));
+            if (!json.result) {
+                alert("変更に失敗しました");
+                return;
+            }
+            alert("変更しました");
+            window.location = "/patient_list";
         },
         onDelete: async function () {
             if (!confirm("本当に取り消しますか？")) { return; }
