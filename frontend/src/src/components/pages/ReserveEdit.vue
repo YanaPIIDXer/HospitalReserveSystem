@@ -3,9 +3,9 @@
         <h1>予約変更・取消</h1>
         <input type="date" v-model="date" />
         <input type="time" v-model="time" /><br />
-        <button class="btn btn-primary">変更</button><br />
+        <button class="btn btn-primary" @click="onUpdate">変更</button><br />
         <hr />
-        <button class="btn btn-danger">取消</button>
+        <button class="btn btn-danger" @click="onDelete">取消</button>
     </div>
 </template>
 
@@ -31,6 +31,14 @@ export default {
         const datetime = new Date(json.datetime);
         this.date = datetime.getFullYear() + "-" + ("00" + (datetime.getMonth() + 1)).slice(-2) + "-" + ("00" + datetime.getDate()).slice(-2);
         this.time = ("00" + datetime.getHours()).slice(-2) + ":" + ("00" + datetime.getMinutes()).slice(-2);
+    },
+    methods: {
+        onUpdate: async function () {
+            if (!confirm("更新しますか？")) { return; }
+        },
+        onDelete: async function () {
+            if (!confirm("本当に取り消しますか？")) { return; }
+        }
     }
 }
 </script>
