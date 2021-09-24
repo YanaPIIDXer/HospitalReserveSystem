@@ -21,7 +21,7 @@
         $stmt->bind_string(":name", $name);
         $stmt->bind_string(":address", $address);
         $stmt->bind_string(":tel", $tel);
-        $stmt->bind_int(":id", $id)
+        $stmt->bind_int(":id", $id);
         $stmt->execute();
     } catch (PDOException $e) {
         $result["result"] = false;

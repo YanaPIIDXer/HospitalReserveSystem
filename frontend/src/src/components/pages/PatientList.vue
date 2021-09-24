@@ -14,6 +14,9 @@
                 <td>
                     <router-link :to="{ name: 'PatientReserve', params: { id: item.id } }">予約</router-link>
                 </td>
+                <td>
+                    <router-link :to="{ name: 'PatientEdit', params: { id: item.id } }">情報更新</router-link>
+                </td>
             </tr>
         </tbody>
     </table>
