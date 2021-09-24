@@ -7,6 +7,11 @@
 <script>
 export default {
     name: "ReserveEdit",
+    data: function() {
+        return {
+            id: this.$route.params.id
+        };
+    }
 }
 </script>
 
