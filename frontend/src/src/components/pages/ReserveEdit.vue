@@ -51,6 +51,17 @@ export default {
         },
         onDelete: async function () {
             if (!confirm("本当に取り消しますか？")) { return; }
+            
+            let params = new URLSearchParams();
+            params.append("id", this.id);
+            const result = await post("reserve/delete.php", params);
+            const json = JSON.parse(JSON.stringify(result.data));
+            if (!json.result) {
+                alert("取消に失敗しました");
+                return;
+            }
+            alert("取り消しました");
+            window.location = "/patient_list";
         }
     }
 }
