@@ -2,7 +2,10 @@
     <div>
         <h1>予約変更・取消</h1>
         <input type="date" v-model="date" />
-        <input type="time" v-model="time" />
+        <input type="time" v-model="time" /><br />
+        <button class="btn btn-primary">変更</button><br />
+        <hr />
+        <button class="btn btn-danger">取消</button>
     </div>
 </template>
 
