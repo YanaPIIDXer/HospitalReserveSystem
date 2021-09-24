@@ -47,8 +47,7 @@ export default {
             params.append("name", name);
             params.append("address", this.address);
             params.append("tel", this.tel);
-            const result = await post("patient/register.php", params);
-            const json = JSON.parse(JSON.stringify(result.data));
+            const json = await post("patient/register.php", params);
             if (!json.result) {
                 alert("登録に失敗しました。");
                 return;

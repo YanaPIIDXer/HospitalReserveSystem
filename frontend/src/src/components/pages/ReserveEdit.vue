@@ -22,8 +22,7 @@ export default {
         };
     },
     mounted: async function() {
-        const result = await get("reserve/get_by_id.php?id=" + this.id);
-        const json = JSON.parse(JSON.stringify(result.data));
+        const json = await get("reserve/get_by_id.php?id=" + this.id);
         if (!json.result) {
             alert("不正なIDです");
             return;
@@ -40,8 +39,7 @@ export default {
             let params = new URLSearchParams();
             params.append("id", this.id);
             params.append("datetime", datetime);
-            const result = await post("reserve/update.php", params);
-            const json = JSON.parse(JSON.stringify(result.data));
+            const json = await post("reserve/update.php", params);
             if (!json.result) {
                 alert("変更に失敗しました");
                 return;
@@ -54,8 +52,7 @@ export default {
             
             let params = new URLSearchParams();
             params.append("id", this.id);
-            const result = await post("reserve/delete.php", params);
-            const json = JSON.parse(JSON.stringify(result.data));
+            const json = await post("reserve/delete.php", params);
             if (!json.result) {
                 alert("取消に失敗しました");
                 return;

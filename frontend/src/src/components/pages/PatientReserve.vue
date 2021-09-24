@@ -41,8 +41,7 @@ export default {
     },
     methods: {
         update: async function () {
-            const result = await get("reserve/patient_reserve.php?id=" + this.id);
-            const json = JSON.parse(JSON.stringify(result.data));
+            const json = await get("reserve/patient_reserve.php?id=" + this.id);
             this.name = json.name;
             this.reserves = json.reserves;
         },
@@ -61,8 +60,7 @@ export default {
             let params = new URLSearchParams();
             params.append("id", this.id);
             params.append("datetime", datetime);
-            const result = await post("reserve/reserve.php", params);
-            const json = JSON.parse(JSON.stringify(result.data));
+            const json = await post("reserve/reserve.php", params);
             if (!json.result) {
                 alert("予約に失敗しました");
                 return;

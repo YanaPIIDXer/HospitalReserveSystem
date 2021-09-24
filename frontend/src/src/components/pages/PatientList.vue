@@ -30,8 +30,7 @@ export default {
         };
     },
     mounted: async function() {
-        var result = await get("patient/list.php");
-        var json = JSON.parse(JSON.stringify(result.data));
+        var json = await get("patient/list.php");
         this.list = json;
     }
 }
