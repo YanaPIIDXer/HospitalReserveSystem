@@ -1,6 +1,7 @@
 import Top from '../components/pages/Top';
 import PatientList from '../components/pages/PatientList';
 import RegisterPatient from '../components/pages/RegisterPatient';
+import PatientEdit from '../components/pages/PatientEdit';
 import ReserveList from '../components/pages/ReserveList';
 import PatientReserve from '../components/pages/PatientReserve';
 import ReserveEdit from '../components/pages/ReserveEdit';
@@ -24,6 +25,11 @@ const routes = [
         path: "/register_patient",
         name: "RegisterPatient",
         component: RegisterPatient
+    },
+    {
+        path: "/patient_edit/:id",
+        name: "PatientEdit",
+        component: PatientEdit
     },
     {
         path: "/reserve_list",

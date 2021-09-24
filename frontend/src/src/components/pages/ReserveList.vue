@@ -27,8 +27,7 @@ export default {
         };
     },
     mounted: async function () {
-        const result = await get("reserve/list.php");
-        const json = JSON.parse(JSON.stringify(result.data));
+        const json = await get("reserve/list.php");
         this.list = json;
     }
 }

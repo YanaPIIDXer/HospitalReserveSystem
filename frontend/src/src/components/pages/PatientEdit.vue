@@ -1,29 +1,40 @@
 <template>
     <div>
-        <h1>患者登録</h1>
+        <h1>患者情報更新</h1>
         <hr />
-        <label>姓：</label><input type="text" name="last_name" v-model="last_name" /><br />
-        <label>名：</label><input type="text" name="first_name" v-model="first_name" /><br />
-        <label>住所：</label><input type="text" name="address" v-model="address" /><br />
-        <label>電話番号</label><input type="text" name="tel" v-model="tel" /><br />
-        <button class="btn btn-primary" @click="onRegister">登録</button>
+        <label>姓：</label><input type="text" v-model="last_name" /><br />
+        <label>名：</label><input type="text" v-model="first_name" /><br />
+        <label>住所：</label><input type="text" v-model="address" /><br />
+        <label>電話番号</label><input type="text" v-model="tel" /><br />
+        <button class="btn btn-primary" @click="onUpdate">更新</button>
     </div>
 </template>
 
 <script>
-import { post } from '../../modules/APIConnection';
+import { get, post } from '../../modules/APIConnection';
 export default {
-    name: "RegisterPatient",
+    name: "PatientEdit",
     data: function() {
         return {
+            id: this.$route.params.id,
             last_name: "",
             first_name: "",
             address: "",
             tel: ""
         };
     },
+    mounted: async function () {
+        await this.updateInfo();
+    },
     methods: {
-        onRegister: async function() {
+        updateInfo: async function() {
+            const json = await get("patient/get_by_id.php?id=" + this.id);
+            this.last_name = json.name.split(" ")[0];
+            this.first_name = json.name.split(" ")[1];
+            this.address = json.address;
+            this.tel = json.tel;
+        },
+        onUpdate: async function() {
             if (this.last_name === "") {
                 alert("姓が入力されていません");
                 return;
@@ -41,18 +52,19 @@ export default {
                 return;
             }
             
-            if (!confirm("登録しますか？")) { return; }
+            if (!confirm("更新しますか？")) { return; }
             const name = this.last_name + " " + this.first_name;
             let params = new URLSearchParams();
+            params.append("id", this.id);
             params.append("name", name);
             params.append("address", this.address);
             params.append("tel", this.tel);
-            const json = await post("patient/register.php", params);
+            const json = await post("patient/update.php", params);
             if (!json.result) {
-                alert("登録に失敗しました。");
+                alert("更新に失敗しました。");
                 return;
             }
-            alert("登録しました");
+            alert("更新しました");
             window.location = "/patient_list";
         }
     }
