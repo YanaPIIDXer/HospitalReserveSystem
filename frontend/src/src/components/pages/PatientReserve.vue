@@ -37,12 +37,15 @@ export default {
         };
     },
     mounted: async function() {
-        const result = await get("reserve/patient_reserve.php?id=" + this.id);
-        const json = JSON.parse(JSON.stringify(result.data));
-        this.name = json.name;
-        this.reserves = json.reserves;
+        await this.update();
     },
     methods: {
+        update: async function () {
+            const result = await get("reserve/patient_reserve.php?id=" + this.id);
+            const json = JSON.parse(JSON.stringify(result.data));
+            this.name = json.name;
+            this.reserves = json.reserves;
+        },
         onReserve: async function() {
             if (!this.date) {
                 alert("日付が入力されていません");
@@ -67,6 +70,7 @@ export default {
             alert("予約しました");
             this.date = null;
             this.time = null;
+            await this.update();
         }
     }
 }
