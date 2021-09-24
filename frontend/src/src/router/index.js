@@ -3,6 +3,7 @@ import PatientList from '../components/pages/PatientList';
 import RegisterPatient from '../components/pages/RegisterPatient';
 import ReserveList from '../components/pages/ReserveList';
 import PatientReserve from '../components/pages/PatientReserve';
+import ReserveEdit from '../components/pages/ReserveEdit';
 import VueRouter from 'vue-router'
 import Vue from 'vue';
 
@@ -33,6 +34,11 @@ const routes = [
         path:"/patient_reserve/:id",
         name: "PatientReserve",
         component: PatientReserve
+    },
+    {
+        path:"/reserve_edit/:id",
+        name: "ReserveEdit",
+        component: ReserveEdit
     }
 ];
 

@@ -11,7 +11,11 @@
             <tbody v-for="item in reserves" v-bind:key="item.id">
                 <tr>
                     <td>{{item.date_and_time}}</td>
-                    <td>変更・取消</td>
+                    <td>
+                        <router-link :to="{ name: 'ReserveEdit', params: { id: item.id } }">
+                            変更・取消
+                        </router-link>
+                    </td>
                 </tr>
             </tbody>
         </table>
