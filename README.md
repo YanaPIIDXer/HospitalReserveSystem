@@ -5,8 +5,8 @@
 
 |Key|Value|Source|
 |---|---|---|
-|フロントエンド|Vue.js|[frontend/src/以下](https://github.com/YanaPIIDXer/HospitalReserveSystem/tree/develop/backend/src)|
-|バックエンド|PHP|[backend/src/以下](https://github.com/YanaPIIDXer/HospitalReserveSystem/tree/develop/frontend/src)|
+|フロントエンド|Vue.js|[frontend/src/以下](https://github.com/YanaPIIDXer/HospitalReserveSystem/tree/develop/frontend/src)|
+|バックエンド|PHP|[backend/src/以下](https://github.com/YanaPIIDXer/HospitalReserveSystem/tree/develop/backend/src)|
 
 ## 想定利用者
 

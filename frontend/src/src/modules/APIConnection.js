@@ -1,7 +1,6 @@
 import conn from "./BasicConnection";
 
-// TODO:本番環境では本番環境用に書き換えるようにする
-const ENDPOINT = "http://localhost:3000/api/";
+const ENDPOINT = (process.env.NODE_ENV == "development" ? "http://localhost:3000" : "http://yanap.apptest.tk:3000") + "/api/";
 
 export async function get(api) {
     const url = ENDPOINT + api;
