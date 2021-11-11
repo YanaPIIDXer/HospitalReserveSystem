@@ -24,7 +24,7 @@
         // PDOオブジェクト生成
         private function create_pdo() {
             try {
-                $host = ""; // TODO:本番環境のRDSのホストを突っ込む
+                $host = "portfolio.covcvgwkzbjk.ap-northeast-3.rds.amazonaws.com";
                 if (isset($_ENV["IS_DEVELOP"])) {
                     $host = "db";
                 }
