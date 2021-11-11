@@ -1,6 +1,6 @@
 import conn from "./BasicConnection";
 
-const ENDPOINT = (process.env.NODE_ENV == "development" ? "http://localhost:3000" : "http://13.208.75.4:3000") + "/api/";
+const ENDPOINT = (process.env.NODE_ENV == "development" ? "https://localhost:3000" : "https://13.208.119.99:3000") + "/api/";
 
 export async function get(api) {
     const url = ENDPOINT + api;
