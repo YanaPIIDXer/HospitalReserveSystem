@@ -15,15 +15,16 @@ services:
     volumes:
       - ./backend/src:/var/www/html
     environment:
-      IS_DEVELOP: true
+      IS_DEVELOP: "true"
+      DB_PASSWORD: "development"
       
   db:
     image: mysql:5.7
     platform: linux/x86_64
     environment:
         MYSQL_ROOT_PASSWORD: password
-        MYSQL_USER: develop
-        MYSQL_PASSWORD: develop
+        MYSQL_USER: development
+        MYSQL_PASSWORD: development
     ports:
         - 3306:3306
     volumes:

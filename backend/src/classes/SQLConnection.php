@@ -24,11 +24,12 @@
         // PDOオブジェクト生成
         private function create_pdo() {
             try {
-                $host = ""; // TODO:本番環境のRDSのホストを突っ込む
+                $host = "portfolio.covcvgwkzbjk.ap-northeast-3.rds.amazonaws.com";
                 if (isset($_ENV["IS_DEVELOP"])) {
                     $host = "db";
                 }
-                $this->pdo = new PDO("mysql:dbname=hospital_reserve;host=". $host, "develop", "develop");
+                $password = $_ENV["DB_PASSWORD"];
+                $this->pdo = new PDO("mysql:dbname=hospital_reserve;host=". $host, "development", $password);
             }
             catch (PDOException $e) { return false; }
             return true;

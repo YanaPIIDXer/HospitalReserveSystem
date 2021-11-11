@@ -1,5 +1,5 @@
 CREATE DATABASE hospital_reserve CHARACTER SET utf8;
-GRANT ALL ON hospital_reserve.* TO develop@'%' IDENTIFIED BY 'develop';
+GRANT ALL ON hospital_reserve.* TO development@'%' IDENTIFIED BY 'development';
 
 USE hospital_reserve;
 
