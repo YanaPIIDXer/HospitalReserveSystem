@@ -28,7 +28,8 @@
                 if (isset($_ENV["IS_DEVELOP"])) {
                     $host = "db";
                 }
-                $this->pdo = new PDO("mysql:dbname=hospital_reserve;host=". $host, "development", "development");
+                $password = $_ENV["DB_PASSWORD"];
+                $this->pdo = new PDO("mysql:dbname=hospital_reserve;host=". $host, "development", $password);
             }
             catch (PDOException $e) { return false; }
             return true;
