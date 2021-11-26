@@ -1,7 +1,7 @@
 <template>
-    <router-link v-bind:to="path">
-        <p class="nav-item nav-link" v-on:click="onClick()" v-bind:class="{active:(selectedIndex == index)}">{{ text }}</p>
-    </router-link>
+    <v-btn text v-on:click="onClick()" v-bind:class="{active:(selectedIndex == index)}" v-bind:to="path">
+        {{ text }}
+    </v-btn>
 </template>
 
 <script>
@@ -22,4 +22,7 @@ export default {
 </script>
 
 <style scoped>
+.active {
+    color: blue;
+}
 </style>
