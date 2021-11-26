@@ -28,11 +28,15 @@ export default {
     },
     methods: {
         updateInfo: async function() {
-            const json = await get("patient/get_by_id.php?id=" + this.id);
-            this.last_name = json.name.split(" ")[0];
-            this.first_name = json.name.split(" ")[1];
-            this.address = json.address;
-            this.tel = json.tel;
+            const result = await get("patient/get_by_id.php?id=" + this.id);
+            if (result.status != 200) {
+                alert("患者データの取得に失敗しました。");
+                return;
+            }
+            this.last_name = result.json.name.split(" ")[0];
+            this.first_name = result.json.name.split(" ")[1];
+            this.address = result.json.address;
+            this.tel = result.json.tel;
         },
         onUpdate: async function() {
             if (this.last_name === "") {
@@ -59,8 +63,8 @@ export default {
             params.append("name", name);
             params.append("address", this.address);
             params.append("tel", this.tel);
-            const json = await post("patient/update.php", params);
-            if (!json.result) {
+            const result = await post("patient/update.php", params);
+            if (result.status != 200 || !result.json.result) {
                 alert("更新に失敗しました。");
                 return;
             }

@@ -39,18 +39,28 @@ export default {
         };
     },
     mounted: async function() {
-        var json = await get("patient/list.php");
-        this.list = json;
+        const result = await get("patient/list.php");
+        if (result.status != 200) {
+            alert("患者リストの取得に失敗しました。");
+            this.list = [];
+            return;
+        }
+        this.list = result.json;
     },
     methods: {
         searchById: async function () {
-            const json = await get("patient/get_by_id.php?id=" + this.search_id);
+            const result = await get("patient/get_by_id.php?id=" + this.search_id);
+            if (result.status != 200) {
+                alert("取得に失敗しました。");
+                this.list = [];
+                return;
+            }
             this.list = [
                 {
                     id: this.search_id,
-                    name: json.name,
-                    address: json.address,
-                    tel: json.tel
+                    name: result.json.name,
+                    address: result.json.address,
+                    tel: result.json.tel
                 }
             ]
         }

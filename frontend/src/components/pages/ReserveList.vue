@@ -27,8 +27,13 @@ export default {
         };
     },
     mounted: async function () {
-        const json = await get("reserve/list.php");
-        this.list = json;
+        const result = await get("reserve/list.php");
+        if (result.status != 200) {
+            alert("予約リストの取得に失敗しました。");
+            this.list = [];
+            return;
+        }
+        this.list = result.json;
     }
 }
 </script>
