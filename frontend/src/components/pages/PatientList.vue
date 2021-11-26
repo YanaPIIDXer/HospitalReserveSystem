@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input type="number" v-model="search_id" />
+        診察券番号から検索：<input type="number" v-model="search_id" />
         <button class="btn btn-primary" @click="searchById">IDで検索</button>
         <hr />
         <v-data-table :headers="headers" :items="list">
