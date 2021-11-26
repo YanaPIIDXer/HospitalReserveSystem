@@ -5,7 +5,7 @@
 
 |Key|Value|Source|
 |---|---|---|
-|フロントエンド|Vue.js|[frontend/src/以下](https://github.com/YanaPIIDXer/HospitalReserveSystem/tree/develop/frontend/src)|
+|フロントエンド|Vue.js|[frontend/以下](https://github.com/YanaPIIDXer/HospitalReserveSystem/tree/develop/frontend)|
 |バックエンド|PHP|[backend/src/以下](https://github.com/YanaPIIDXer/HospitalReserveSystem/tree/develop/backend/src)|
 
 ## 想定利用者
@@ -18,6 +18,6 @@
 1. 患者情報の新規追加
 2. 患者情報一覧の表示
 3. 患者の予約登録
-4. 患者の予約変更（更新）
+4. 患者の予約変更（
 5. 患者の予約キャンセル（削除）
 6. 患者情報の更新
