@@ -1,6 +1,7 @@
 <template>
     <v-app-bar color="primary" app dark>
         <v-app-bar-title>診療予約システム</v-app-bar-title>
+        <v-spacer />
         <nav-bar-item text="トップ" path="/" index=0 :selectedIndex="selectedIndex" @on-click="onClickItem" />
         <nav-bar-item text="患者一覧" path="/patient_list" index=1 :selectedIndex="selectedIndex" @on-click="onClickItem" />
         <nav-bar-item text="患者追加" path="/register_patient" index=2 :selectedIndex="selectedIndex" @on-click="onClickItem" />
