@@ -1,19 +1,8 @@
 <template>
     <div>
         <h1>予約リスト</h1>
-        <table class="table table-stripe">
-            <thead>
-                <tr>
-                    <th>予約者名</th><th>日時</th>
-                </tr>
-            </thead>
-            <tbody v-for="item in list" v-bind:key="item.name">
-                <tr>
-                    <td>{{item.name}}</td>
-                    <td>{{item.date_and_time}}</td>
-                </tr>
-            </tbody>
-        </table>
+        <v-data-table :headers="headers" :items="list">
+        </v-data-table>
     </div>
 </template>
 
@@ -23,7 +12,19 @@ export default {
     name: "ReserveList",
     data: function () {
         return {
-            list: []
+            list: [],
+            headers: [
+                {
+                    text: "予約者名",
+                    align: "center",
+                    value: "name"
+                },
+                {
+                    text: "日時",
+                    align: "center",
+                    value: "date_and_time"
+                },
+            ],
         };
     },
     mounted: async function () {
