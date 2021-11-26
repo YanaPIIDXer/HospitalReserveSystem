@@ -1,4 +1,5 @@
 <template>
+    <!--
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <p class="navbar-brand">診療予約システム</p>
         <div class="navbar-nav">
@@ -8,15 +9,19 @@
             <nav-bar-item text="予約一覧" path="reserve_list" index=3 :selectedIndex="selectedIndex" @on-click="onClickItem" />
         </div>
     </nav>
+    -->
+    <v-app-bar color="primary" app dark>
+        <v-app-bar-title>診療予約システム</v-app-bar-title>
+    </v-app-bar>
 </template>
 
 <script>
-import NavBarItem from './NavBarItem';
+//import NavBarItem from './NavBarItem';
 
 export default {
     name: "NavBar",
     components: {
-        NavBarItem
+        //NavBarItem
     },
     data: function () {
         return {
