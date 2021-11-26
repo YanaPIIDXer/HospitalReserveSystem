@@ -4,20 +4,28 @@ const ENDPOINT = (process.env.NODE_ENV == "development" ? "https://localhost:300
 
 export async function get(api) {
     const url = ENDPOINT + api;
-    var json = null;
+    var result = {
+        status: 0,
+        json: null,
+    }
     try {
-        const result = await conn.get(url);
-        json = JSON.parse(JSON.stringify(result.data));    
-    } catch { return null; }
-    return json;
+        const res = await conn.get(url);
+        result.status = res.status;
+        result.json = JSON.parse(JSON.stringify(res.data));    
+    } catch { return result; }
+    return result;
 }
 
 export async function post(api, params) {
     const url = ENDPOINT + api;
-    var json = null;
+    var result = {
+        status: 0,
+        json: null,
+    }
     try {
-        const result = await conn.post(url, params);
-        json = JSON.parse(JSON.stringify(result.data));            
-    } catch { return null}
-    return json;
+        const res = await conn.post(url, params);
+        result.status = res.status;
+        result.json = JSON.parse(JSON.stringify(res.data));            
+    } catch { return result; }
+    return result;
 }

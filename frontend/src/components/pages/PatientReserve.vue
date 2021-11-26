@@ -41,9 +41,13 @@ export default {
     },
     methods: {
         update: async function () {
-            const json = await get("reserve/patient_reserve.php?id=" + this.id);
-            this.name = json.name;
-            this.reserves = json.reserves;
+            const result = await get("reserve/patient_reserve.php?id=" + this.id);
+            if (result.status != 200) {
+                alert("患者情報の取得に失敗しました。");
+                return;
+            }
+            this.name = result.json.name;
+            this.reserves = result.json.reserves;
         },
         onReserve: async function() {
             if (!this.date) {
@@ -60,8 +64,8 @@ export default {
             let params = new URLSearchParams();
             params.append("id", this.id);
             params.append("datetime", datetime);
-            const json = await post("reserve/reserve.php", params);
-            if (!json.result) {
+            const result = await post("reserve/reserve.php", params);
+            if (result.status != 200 || !result.json.result) {
                 alert("予約に失敗しました");
                 return;
             }

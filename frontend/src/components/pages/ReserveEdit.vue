@@ -22,12 +22,16 @@ export default {
         };
     },
     mounted: async function() {
-        const json = await get("reserve/get_by_id.php?id=" + this.id);
-        if (!json.result) {
+        const result = await get("reserve/get_by_id.php?id=" + this.id);
+        if (result.status != 200) {
+            alert("予約データの取得に失敗しました。");
+            return;
+        }
+        if (!result.json.result) {
             alert("不正なIDです");
             return;
         }
-        const datetime = new Date(json.datetime);
+        const datetime = new Date(result.json.datetime);
         this.date = datetime.getFullYear() + "-" + ("00" + (datetime.getMonth() + 1)).slice(-2) + "-" + ("00" + datetime.getDate()).slice(-2);
         this.time = ("00" + datetime.getHours()).slice(-2) + ":" + ("00" + datetime.getMinutes()).slice(-2);
     },
@@ -39,8 +43,8 @@ export default {
             let params = new URLSearchParams();
             params.append("id", this.id);
             params.append("datetime", datetime);
-            const json = await post("reserve/update.php", params);
-            if (!json.result) {
+            const result = await post("reserve/update.php", params);
+            if (result.status != 200 || !result.json.result) {
                 alert("変更に失敗しました");
                 return;
             }
@@ -52,8 +56,8 @@ export default {
             
             let params = new URLSearchParams();
             params.append("id", this.id);
-            const json = await post("reserve/delete.php", params);
-            if (!json.result) {
+            const result = await post("reserve/delete.php", params);
+            if (result.status != 200 || !result.json.result) {
                 alert("取消に失敗しました");
                 return;
             }
