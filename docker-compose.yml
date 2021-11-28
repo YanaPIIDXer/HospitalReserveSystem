@@ -8,6 +8,7 @@ services:
       - ./backend/src:/var/www/html
     environment:
       IS_DEVELOP: "true"
+      DB_HOST: "db"
       DB_PASSWORD: "development"
       
   db:
