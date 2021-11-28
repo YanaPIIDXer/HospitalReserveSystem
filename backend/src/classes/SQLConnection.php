@@ -24,10 +24,7 @@
         // PDOオブジェクト生成
         private function create_pdo() {
             try {
-                $host = "portfolio.covcvgwkzbjk.ap-northeast-3.rds.amazonaws.com";
-                if (isset($_ENV["IS_DEVELOP"])) {
-                    $host = "db";
-                }
+                $host = $_ENV["DB_HOST"];
                 $password = $_ENV["DB_PASSWORD"];
                 $this->pdo = new PDO("mysql:dbname=hospital_reserve;host=". $host, "development", $password);
             }
